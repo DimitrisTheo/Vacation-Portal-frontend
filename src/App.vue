@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Navbar ></Navbar>
+
+    <b-container style="flex: 1 0 auto;" class="my-2">
+      <router-view></router-view>
+    </b-container>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navbar from "@/components/Navbar";
 
 export default {
   name: 'App',
+  watch: {
+    $route: {
+      immediate: true,
+      handler(to) {
+        document.title = to.meta.title || 'Epignosis Assignment';
+      }
+    }
+  },
   components: {
-    HelloWorld
+    Navbar
   }
 }
 </script>
@@ -23,6 +35,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /*margin-top: 60px;*/
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 </style>
