@@ -64,6 +64,10 @@ export default {
     }
   },
   beforeMount() {
+    // NOT access if not admin
+    if (this.currentUser.user_type !== "admin")
+      this.$router.push('/404')
+
     let url = "/users";
 
     http.get(url)

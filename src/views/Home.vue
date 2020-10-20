@@ -72,6 +72,10 @@ export default {
     }
   },
   beforeMount() {
+    //not access if not employee
+    if (this.currentUser.user_type !== "employee")
+      this.$router.push('/404')
+
     let url = "/submissions?id="+this.currentUser.id;
 
     http.get(url)

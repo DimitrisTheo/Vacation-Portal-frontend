@@ -70,7 +70,10 @@ export default {
     }
   },
   beforeMount() {
-    // console.log(this.user.id)
+    //not access if not admin
+    if (this.currentUser.user_type !== "admin")
+      this.$router.push('/404')
+
   },
   methods:{
     onSubmit(evt) {

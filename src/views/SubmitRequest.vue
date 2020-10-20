@@ -83,6 +83,12 @@ export default {
       this.form = {};
       this.$nextTick(() => { this.submitted = false })
     }
+  },
+  beforeMount() {
+    //not access if not employee
+    if (this.currentUser.user_type !== "employee")
+      this.$router.push('/404')
+
   }
 }
 </script>

@@ -104,6 +104,12 @@ export default {
       this.user = {};
       this.$nextTick(() => { this.submitted = false })
     }
+  },
+  beforeMount() {
+    //not access if not admin
+    if (this.currentUser.user_type !== "admin")
+      this.$router.push('/404')
+
   }
 }
 </script>
